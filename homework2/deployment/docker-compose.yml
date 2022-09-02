@@ -48,6 +48,16 @@ services:
     environment:
       - "discovery.type=single-node"
 
+  projector-monitoring-api:
+    container_name: projector-monitoring-api
+    ports:
+        - 8010:80
+    image: projector-monitoring-api:latest   
+    build:
+        context: ../src
+        dockerfile: Projector.Monitoring/Dockerfile
+    restart: on-failure
+
 volumes:
   grafana-storage:
   influxdb-storage:
