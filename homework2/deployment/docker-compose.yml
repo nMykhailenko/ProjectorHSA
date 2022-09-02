@@ -5,9 +5,9 @@ services:
     image: influxdb:2.1.1
     volumes:
       - influxdb-storage:/var/lib/influxdb2:rw
-    entrypoint: ["./entrypoint.sh"]
     env_file:
       - .env
+    entrypoint: ["./entrypoint.sh"]
     restart: on-failure:10
     ports:
       - ${DOCKER_INFLUXDB_INIT_PORT}:8086
@@ -29,6 +29,24 @@ services:
       - influxdb
     ports:
       - ${GRAFANA_PORT}:3000
+
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/apps/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin12345
+  
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - "discovery.type=single-node"
 
 volumes:
   grafana-storage:
