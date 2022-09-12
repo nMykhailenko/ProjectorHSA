@@ -1,0 +1,1 @@
+http://projector-stress-test-api:80/api/requests
