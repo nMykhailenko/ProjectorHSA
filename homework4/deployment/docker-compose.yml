@@ -1,0 +1,41 @@
+version: "3.6"
+networks:
+  projector-stress-test:
+    driver: bridge
+
+services:
+    projector-stress-test-postgres-db:
+        image: postgres:latest
+        container_name: projector-stress-test-postgres-db
+        restart: unless-stopped
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=Projector-Stress-Test
+        networks:
+            - projector-stress-test
+        volumes:
+            - projector-stress-test-data:/var/lib/postgresql/data
+
+    projector-stress-test-api:
+        container_name: projector-stress-test-api
+        ports:
+            - 8010:80
+        image: projector-stress-test:latest   
+        build:
+            context: ../src
+            dockerfile: Projector.StressTesting/Dockerfile
+        restart: on-failure
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+        links: 
+            - projector-stress-test-postgres-db
+        depends_on:
+            - projector-stress-test-postgres-db
+        networks:
+            - projector-stress-test
+
+volumes:
+    projector-stress-test-data:
