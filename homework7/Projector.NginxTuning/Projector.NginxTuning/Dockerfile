@@ -4,9 +4,11 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
 WORKDIR /src
 COPY ["Projector.NginxTuning/Projector.NginxTuning.csproj", "Projector.NginxTuning/"]
 RUN dotnet restore "Projector.NginxTuning/Projector.NginxTuning.csproj"
+
 COPY . .
 WORKDIR "/src/Projector.NginxTuning"
 RUN dotnet build "Projector.NginxTuning.csproj" -c Release -o /app/build
