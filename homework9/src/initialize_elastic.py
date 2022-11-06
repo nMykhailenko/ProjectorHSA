@@ -35,13 +35,33 @@ if index_exists == False:
 
     data = json.dumps(
         {
+            "settings": {
+                "analysis": {
+                    "analyzer": {
+                        "prjctr_analyzer": {
+                            "tokenizer": "prjctr_tokenizer"
+                        }
+                    },
+                    "tokenizer": {
+                        "prjctr_tokenizer": {
+                            "type": "ngram",
+                            "min_gram": 2,
+                            "max_gram": 3,
+                            "token_chars": [
+                                "letter",
+                                "digit"
+                            ]
+                        }
+                    }
+                }
+            },
             "mappings": {
                 "properties": {
                     "word": {
-                        "type": "search_as_you_type"
-                        }
-                    }       
+                        "type": "completion"
+                    }
                 }
+            }
         }
     )
 
@@ -79,6 +99,8 @@ if index_size == 0:
         response = requests.put(f'{base_url}/{index_name}/_doc/{i+1}', headers=headers, data=data)
         if response.status_code != 201:
             raise Exception(f"Cannot put word '{words[i]}' with position {i} to '{index_name}' index")
+        else:
+            print(f"Add {words[i]} to '{index_name}' index")
 
     print(f"Finish adding docs to '{index_name}' index")
 
