@@ -1,6 +1,8 @@
 ﻿*/.idea
 */*/Projector.Monitoring/bin
 */*/Projector.Monitoring/obj
+*/*/Projector.DSA/bin
+*/*/Projector.DSA/obj
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -18,3 +20,5 @@
 /homework4/Projector.StressTesting/.idea/.idea.Projector.StressTesting/.idea/projectSettingsUpdater.xml
 /homework4/Projector.StressTesting/.idea/.idea.Projector.StressTesting/.idea/workspace.xml
 /homework4/Projector.StressTesting/.idea/.idea.Projector.StressTesting/.idea/vcs.xml
+
+/homework17/Projector.DSA/.idea/.idea.Projector.DSA/.idea/*
