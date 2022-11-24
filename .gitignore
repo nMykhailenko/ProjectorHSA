@@ -3,8 +3,6 @@
 */*/Projector.Monitoring/obj
 */*/Projector.DSA/bin
 */*/Projector.DSA/obj
-*/*/Projector.Queue/bin
-*/*/Projector.Queue/obj
 # Default ignored files
 /shelf/
 /workspace.xml
@@ -24,5 +22,6 @@
 /homework4/Projector.StressTesting/.idea/.idea.Projector.StressTesting/.idea/vcs.xml
 
 /homework17/Projector.DSA/.idea/.idea.Projector.DSA/.idea/*
-/homework10/Projector.Queue/.idea/.idea.Projector.Queue/.idea/*
-
+homework10/src/Projector.Queue/.idea/.idea.Projector.Queue/.idea/*
+homework10/src/Projector.Queue/Projector.Queue/obj/*
+homework10/src/Projector.Queue/Projector.Queue/bin/*
