@@ -9,6 +9,9 @@
 
     <ItemGroup>
       <PackageReference Include="Beanstalk.Core" Version="1.1.2" />
+      <PackageReference Include="ServiceStack.Redis" Version="6.4.0" />
+      <PackageReference Include="ServiceStack.Server" Version="6.4.0" />
+      <PackageReference Include="StackExchange.Redis" Version="2.6.80" />
     </ItemGroup>
 
 </Project>

@@ -10,7 +10,7 @@ services:
       - "6380:6379"
     networks:
         - projector-queue 
-        
+
   redis-aof:
     image: redis:latest
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -26,7 +26,21 @@ services:
     ports:
       - "11300:11300" 
     networks:
-        - projector-queue     
+        - projector-queue  
+
+  projector-queue:
+    container_name: projector-queue
+    ports:
+        - 80:80
+    image: projector-queue:latest   
+    build:
+        context: ../src/Projector.Queue
+        dockerfile: Projector.Queue/Dockerfile
+    restart: on-failure
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+        - projector-queue
 
 networks:
   projector-queue:

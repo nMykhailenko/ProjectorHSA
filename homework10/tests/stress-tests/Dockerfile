@@ -6,6 +6,8 @@ RUN apt-get update && \
 RUN sudo apt update -y
 RUN sudo apt install siege -y
 
-COPY urls.txt ./app
+COPY redis-aof.txt ./app
+COPY redis-rdb.txt ./app
+COPY beanstalkd-urls.txt ./app
 
 ENTRYPOINT ["siege"]
