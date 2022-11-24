@@ -1,0 +1,3 @@
+http://projector-queue:80/redis-rdb POST
+http://projector-queue:80/refis-rdb POST
+http://projector-queue:80/redis-rdb GET

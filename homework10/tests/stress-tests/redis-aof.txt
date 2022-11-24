@@ -1,0 +1,3 @@
+http://projector-queue:80/redis-aof POST
+http://projector-queue:80/refis-aof POST
+http://projector-queue:80/redis-aof GET

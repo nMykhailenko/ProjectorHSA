@@ -1,0 +1,3 @@
+http://projector-queue:80/beanstalkd POST
+http://projector-queue:80/beanstalkd POST
+http://projector-queue:80/beanstalkd GET
