@@ -1,0 +1,63 @@
+version: '3.6'
+
+services:
+  load-balancer:
+    build: .
+    volumes:
+      - ./load-balancer/nginx.conf:/etc/nginx/nginx.conf:ro      
+      - ./geo-ip:/var/lib/GeoIP/  
+    ports:
+      - 80:80
+    networks:
+      usa:
+        ipv4_address: 69.162.81.2      
+
+  app_GreatBritan:
+    image: nginx:latest
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../app/GreatBritan/index.html:/usr/share/nginx/html/index.html
+    networks:
+      usa:
+        ipv4_address: 69.162.81.3      
+
+  app_USA1:
+    image: nginx:latest
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../app/USA/index.html:/usr/share/nginx/html/index.html
+    networks:
+      usa:
+        ipv4_address: 69.162.81.4      
+
+  app_USA2:
+    image: nginx:latest
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../app/USA/index.html:/usr/share/nginx/html/index.html
+    networks:
+      usa:
+        ipv4_address: 69.162.81.5      
+
+  app_other:
+    image: nginx:latest
+    volumes:
+      - ./server/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../app/Other/index.html:/usr/share/nginx/html/index.html
+    networks:
+      usa:
+        ipv4_address: 69.162.81.6      
+
+  test:
+    image: nginx:latest   
+    networks:
+      usa:
+        ipv4_address: 69.162.81.155
+
+networks:
+  usa:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 69.162.81.0/24
+        gateway: 69.162.81.1
