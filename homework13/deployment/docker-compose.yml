@@ -1,0 +1,43 @@
+services:
+
+  mysql:
+    image: mysql/mysql-server:latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql/mysql.cnf:/etc/my.cnf:ro
+      - ./mysql/log/mysqld_slow.log:/var/log/mysql/mysqld_slow.log:rw
+    environment:
+      - MYSQL_ROOT_PASSWORD=Master123! 
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.4.3
+    command: filebeat -e --strict.perms=false -E output.elasticsearch.hosts=["elasticsearch:9200"] -E setup.kibana.host=kibana:5601
+    user: root
+    volumes:
+      - ./filebeat/filebeat.yml:/etc/filebeat/filebeat.yml:ro
+      - ./mysql/log/:/var/log/mysql/
+
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
+    environment:
+      - cluster.name=docker-cluster
+      - xpack.security.enabled=false
+      - discovery.type=single-node      
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536       
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.4.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - 5601:5601
