@@ -1,7 +1,6 @@
 import psycopg2
 from random import randint, choice
 import string
-import threading
 import time
 
 letters = string.ascii_lowercase + string.ascii_uppercase
