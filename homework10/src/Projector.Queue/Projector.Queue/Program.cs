@@ -48,12 +48,12 @@ app.MapPost("/redis-rdb", async () =>
 
     var email = new Email
     {
-        from = "admin@spotadvert.com",
-        to = new List<string> {"volodymyr@plat4me.com"},
-        cc = new List<string> {"admin@gmail.com"},
-        subject = "Test 1",
+        from = "cs@greentimeinvestment.com",
+        to = new List<string> {"mykyta.m@plat4me.com"},
+        cc = new List<string>(),
+        subject = "Test sender 3saving new",
         body =
-            "<!DOCTYPE html>\n<html>\n    <head></head>\n<body>\n    <p>Welcome</p>\n-----\n  <p>Hi, this is test-1</p>  \n-----\n    <p>Contact me:  </p>\n    Best regards,\nVolodymyr Andryeyev\n</body>\n</html>",
+            "<!DOCTYPE html>\n<html>\n    <head></head>\n<body>\n    <p>Welcome</p>\n-----\n  <p>Hi, this is test-1-1</p>  \n-----\n    <p>Contact me:  </p>\n    Best regards,\nVolodymyr Andryeyev\n</body>\n</html>",
         files = new List<object>(),
     };
     var root = new Root
@@ -61,7 +61,7 @@ app.MapPost("/redis-rdb", async () =>
         email = email,
         extra = new Extra
         {
-            conversationMessageId = 403
+            conversationMessageId = 425
         }
     };
     await subscriber.PublishAsync("email", JsonSerializer.Serialize(root));
