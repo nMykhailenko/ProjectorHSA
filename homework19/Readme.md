@@ -1,4 +1,12 @@
 ## Simple table without partitions
+```
+CREATE TABLE movies (
+id bigint not null,
+category_id  int not null,
+produce character varying not null,
+title character varying not null,
+age int not null )
+```
 
 ## Table patitioned by shards
 ### Create table on main shard
