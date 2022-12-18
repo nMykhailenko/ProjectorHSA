@@ -1,16 +1,10 @@
-version: "3.9"
-services:
-  api:
-    build:
-      context: ../Projector.NginxTuning
-      dockerfile: Projector.NginxTuning/Dockerfile
-    ports:
-      - 9010:80
+version: '3.6'
+services:  
   nginx:
-    image: nginx:alpine
+    image: nginx:latest
+    restart: always
+    ports:
+      - 80:80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - api
-    ports:
-      - "4000:4000"
+      - ../src/data:/data:ro
