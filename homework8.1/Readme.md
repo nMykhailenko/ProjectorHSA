@@ -10,8 +10,8 @@ SET GLOBAL innodb_status_output_locks=ON;
 
 ## Init
 
-cd ../src
-run run.sql
+`cd ../scripts`
+`execute run.sql`
 
 ```
 drop table accounts;
