@@ -51,7 +51,7 @@ Accept-Ranges: bytes
 ### 3. Request image third time and get it from cache: 
 `curl -D - localhost/images/test.png --output temp.png` 
 
-In output we get *X-Cache-Status: HIT* and file size *65992*:
+In output we get *X-Cache-Status: HIT* and file size *65484*:
 ``` 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -66,7 +66,7 @@ ETag: "639f8115-2141"
 X-Cache-Status: HIT
 Accept-Ranges: bytes
 
-100  8513  100  8513    0     0  65150      0 --:--:-- --:--:-- --:--:-- 65992
+100  8513  100  8513    0     0  64566      0 --:--:-- --:--:-- --:--:-- 65484
 ```
 
 ### 4. Replace image with other
@@ -77,7 +77,7 @@ mv data/images/test.png data/images/test1.png
 ### 5. Request image fourth time and get old one from cache: 
 `curl -D - localhost/images/test.png --output temp.png` 
 
-In output we get *X-Cache-Status: HIT* and file size *65992*:
+In output we get *X-Cache-Status: HIT* and file size *65484*:
 ``` 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -92,5 +92,5 @@ ETag: "639f8115-2141"
 X-Cache-Status: HIT
 Accept-Ranges: bytes
 
-100  8513  100  8513    0     0  65150      0 --:--:-- --:--:-- --:--:-- 65992
+100  8513  100  8513    0     0  64566      0 --:--:-- --:--:-- --:--:-- 65484
 ``` 
