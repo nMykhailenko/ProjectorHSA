@@ -33,7 +33,7 @@ docker run currency_exchange
 ```
 
 ## Real Time Events in Google Analytics
-[Real-time](https://user-images.githubusercontent.com/11583344/209483842-a1920e8e-591a-4b81-a7a4-ba1680eaf8b8.png)
+![Real-time](https://user-images.githubusercontent.com/11583344/209483842-a1920e8e-591a-4b81-a7a4-ba1680eaf8b8.png)
 
 ## USD-UAH currency
-[Exchange](https://user-images.githubusercontent.com/52753625/188312892-a06b9119-06bd-4c49-b19a-fe2236ea3cbe.PNG)
+![Exchange](https://user-images.githubusercontent.com/52753625/188312892-a06b9119-06bd-4c49-b19a-fe2236ea3cbe.PNG)
