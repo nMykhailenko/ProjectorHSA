@@ -1,0 +1,11 @@
+$ttl 5
+#38400
+contdelinetw.com.	IN	SOA	ns.contdelinetw.com. admin.contdelinetw.com. (
+			1665176158
+			10800
+			3600
+			604800
+			38400 )
+contdelinetw.com.	IN	NS	ns.contdelinetw.com.
+ns.contdelinetw.com.	IN	A	192.168.55.2
+host.contdelinetw.com.	IN	A	192.168.55.3

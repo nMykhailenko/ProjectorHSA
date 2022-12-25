@@ -1,0 +1,8 @@
+zone "contdelinetw.com" {
+	type master;
+	file "/var/lib/bind/contdelinetw.com.hosts";
+	};
+zone "2.55.168.192.in-addr.arpa" {
+	type master;
+	file "/var/lib/bind/192.168.55.2.rev";
+	};

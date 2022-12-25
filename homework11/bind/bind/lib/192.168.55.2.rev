@@ -1,0 +1,8 @@
+$ttl 38400
+2.55.168.192.in-addr.arpa.	IN	SOA	ns.contdelinetw.com. admin.contdelinetw.com. (
+			1665176265
+			10800
+			3600
+			604800
+			38400 )
+2.55.168.192.in-addr.arpa.	IN	NS	ns.contdelinetw.com.

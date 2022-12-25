@@ -1,0 +1,18 @@
+$TTL	86400 ;
+$ORIGIN condelnet.com.
+@  1D  IN	 SOA ns.condelnet.com.	admin.condelnet.com. (
+			      2002022401 ; serial
+			      3H ; refresh
+			      15 ; retry
+			      1w ; expire
+			      3h ; minimum
+			     )
+       IN  NS     ns.condelnet.com.
+; server host definitions
+ns    IN  A      192.168.55.2  ; name server definition 
+lb2    IN  A      192.168.55.4  ; load balancer #2 server definition
+app1    IN  A      192.168.55.5  ; web server #1 definition
+app2    IN  A      192.168.55.6  ; web server #2 definition
+app3    IN  A      192.168.55.7  ; web server #3 definition
+app4    IN  A      192.168.55.8  ; web server #4 definition
+www    IN  CNAME  lb2.condelnet.com.  ; cname for load balancer #2 server definition

@@ -1,0 +1,89 @@
+version: '2'
+
+services:
+
+  bind:
+    image: sameersbn/bind:9.16.1-20200524
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.2
+    ports:
+    - 53:53/udp
+    - 53:53/tcp
+    - 10000:10000/tcp
+    volumes:
+    - ./bind:/data
+
+  load-balancer-1:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.3
+    volumes:
+    - ./UA/lb/nginx.conf:/etc/nginx/nginx.conf
+
+  load-balancer-2:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.4
+    volumes:
+    - ./World/lb/nginx.conf:/etc/nginx/nginx.conf
+
+  web-1:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.5
+    volumes:
+    - ./UA/host1/nginx.conf:/etc/nginx/nginx.conf
+    - ./UA/host1/index.html:/usr/share/nginx/html/index.html
+
+  web-2:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.6
+    volumes:
+    - ./UA/host2/nginx.conf:/etc/nginx/nginx.conf
+    - ./UA/host2/index.html:/usr/share/nginx/html/index.html
+
+  web-3:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.7
+    volumes:
+    - ./World/host1/nginx.conf:/etc/nginx/nginx.conf
+    - ./World/host1/index.html:/usr/share/nginx/html/index.html
+
+  web-4:
+    image: nginx:latest
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.8
+    volumes:
+    - ./World/host2/nginx.conf:/etc/nginx/nginx.conf
+    - ./World/host2/index.html:/usr/share/nginx/html/index.html
+
+  test_zone_UA:
+    image: nginx:latest
+    restart: always    
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.15
+
+  test_zone_WORLD:
+    image: nginx:latest
+    restart: always    
+    networks:
+      cdn:
+        ipv4_address: 192.168.55.150
+
+networks:
+  cdn:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.55.0/24
+        gateway: 192.168.55.1
